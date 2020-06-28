@@ -8,6 +8,7 @@ use App\Subcategory;
 class SubcategoryController extends Controller
 {
     public function index(){
-        return(Subcategory::all());
+        return(['success' => true, 'data' => Subcategory::all()]);
+
     }
 }

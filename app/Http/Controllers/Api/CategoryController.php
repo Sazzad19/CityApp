@@ -8,6 +8,6 @@ use App\Category;
 class CategoryController extends Controller
 {
     public function index(){
-        return(Category::all());
+        return(['success' => true, 'data' => Category::all()]);
     }
 }

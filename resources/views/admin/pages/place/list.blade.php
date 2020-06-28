@@ -48,11 +48,11 @@
                                 <th>Category</th>
                                 <th>Subcategory</th>
                                 <th>Location</th>
-                                <th>Description</th>
+
                                 <th>Contact No</th>
                                 <th>Website</th>
                                 <th>Charge</th>
-                                <th>Document</th>
+                              
                                 <th>Position</th>
                                 <th>Action</th>
                             </tr>
@@ -70,11 +70,11 @@
                                 <td>{{$place->category->name}}</td>                               
                                 <td>{{$place->subcategory ?  $place->subcategory->name : ''}}</td>
                                 <td>{{$place->location}}</td>
-                                <td>{{$place->description}}</td>
+                                
                                 <td>{{$place->phone_number}}</td>
                                 <td>{{$place->website}}</td>
-                                <td>{{$place->charge}}</td>
-                                <td>{{$place->document}}</td>
+                                <td>{{$place->charges}}</td>
+                               
                                 <td>Latitude : {{$place->lat}}, Longitude: {{$place->lng}}</td>
                                 <td>
                                     <div class="row">
@@ -92,8 +92,8 @@
                                             </form>
                                         </div>
                                         <div class="col-sm-12"> 
-                                        <a type="button" class="btn btn-info" href="{{route('placegallery', $place->id)}}">
-                                        <i class="fas fa-images"></i>
+                                        <a type="button" class="btn btn-info" href="{{route('places.show', $place->id)}}">
+                                            <i class="fa fa-eye"></i>
                                     </a>
                                         </div>
                                     </div>
@@ -115,11 +115,11 @@
                                 <th>Category</th>
                                 <th>Subcategory</th>
                                 <th>Location</th>
-                                <th>Description</th>
+                                
                                 <th>Contact No</th>
                                 <th>Website</th>
                                 <th>Charges</th>
-                                <th>Document</th>
+                                
                                 <th>Position</th>
                                 <th>Action</th>
                             </tr>

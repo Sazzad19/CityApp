@@ -206,7 +206,11 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                                 <div class="dropdown-divider"></div>
                                 <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
                             </div>
@@ -237,10 +241,11 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('subcategories.index')}}" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Subcategory</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('places.index')}}" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Place</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('subscriber.index')}}" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Subscriber</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('enquiredpackages.index')}}" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Enquired Package</span></a></li>
+
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">News</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Enquired Package</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Ad Management</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Account Management</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admobs.index')}}" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Ad Management</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{route('admin.accountform')}}" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Account Management</span></a></li>
 
 
 
@@ -297,7 +302,7 @@
     <script src="{{ asset('admin/assets/libs/flot/jquery.flot.crosshair.js') }}"></script>
     <script src="{{ asset('admin/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
     <script src="{{ asset('admin/dist/js/pages/chart/chart-page-init.js') }}"></script>
-    @yield('ext_scr')
+    @yield('ext_scr') 
 
 </body>
 

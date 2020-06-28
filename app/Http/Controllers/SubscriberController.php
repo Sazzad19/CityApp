@@ -11,4 +11,9 @@ class SubscriberController extends Controller
         $users = User::all();
         return view('admin.pages.subscriber.list', compact('users'));
     }
+
+    public function notification($id) {
+        $subscriber = User::find($id);
+        return view('admin.pages.subscriber.notification', compact('subscriber'));
+    }
 }

@@ -9,7 +9,7 @@
         <div class="col-12 d-flex no-block align-items-center">
             <h4 class="page-title">Category Table</h4>
             <div class="ml-auto text-right">
-                <a type="button" href="{{route('categories.create')}}" class="btn btn-success">Add Category</a>
+                {{--<a type="button" href="{{route('categories.create')}}" class="btn btn-success">Add Category</a>!--}}
             </div>
         </div>
         @if(Session::has('success'))
@@ -59,7 +59,7 @@
                                             </a>
                                         </div>
 
-                                        <div class="col-sm-1">
+                                        {{--<div class="col-sm-1">
                                             <form action="{{route('categories.destroy', $category->id)}}" method="post">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 {{ csrf_field()}}
@@ -69,7 +69,7 @@
 
                                         <div class="col-sm-1"> 
                                     <a href="{{route('subcategory.create',$category->id)}}" class="btn btn-info "><i class="far fa-plus-square"></i>Add Subcategory</a>
-                                        </div>
+                                        </div>!--}}
                                     </div>
                                 </td>
                                

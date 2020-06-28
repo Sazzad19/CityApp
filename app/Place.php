@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Place extends Model
 {
     protected $fillable = [
-        'name', 'location', 'phone_number', 'website', 'charges',
+        'name', 'location', 'phone_number', 'website', 'charges', 'd_name', 'd_specialist', 'd_graduation',
         'description', 'document', 'lng', 'lat', 'subcategory_id', 'category_id',
         'city_id', 'state_id',
     ];
@@ -35,6 +35,11 @@ class Place extends Model
     {
         return $this->belongsTo(City::class);
     }
+    function commentratting(){
+        //return $this->hasMany(CommentRatting::class);
+    }
+
+   
 
 
 

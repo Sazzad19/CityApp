@@ -52,7 +52,10 @@ class PlaceController extends Controller
             'subcategory_id' => 'numeric',
             'location' => 'required|string',
             'description' => 'required',
-            'phone_number' => 'required|numeric',
+            'd_name' => 'string|max:30',
+            'd_specialist' => 'string',
+            'd_graduation' => 'string',
+            'phone_number' => 'required',
             'website' => 'required|string',
             'charges' => 'required',
             'images' => 'required',
@@ -73,8 +76,6 @@ class PlaceController extends Controller
                ]);
                      
         }
-
-
 
     
          if($request->hasfile('images'))
@@ -109,9 +110,12 @@ class PlaceController extends Controller
      * @param  \App\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function show(Place $place)
+    public function show($id)
     {
-        //
+        $place = Place::find($id);
+        $placeimages = $place->images;
+        return view('admin.pages.place.view', compact('placeimages', 'place'));
+
     }
 
     /**
@@ -185,8 +189,51 @@ class PlaceController extends Controller
     }
     public function placegallery($id) {
         $place = Place::find($id);
-        $placeimages = PlaceImage::where('place_id', $id)->get();
+        $placeimages = $place->images;
+        //$placeimages = PlaceImage::where('place_id', $id)->get();
         return view('admin.pages.place.gallery1', compact('placeimages', 'place'));
+    }
+
+    public function uploadPhoto(Request $request, $id) {
+        $request->validate([
+            'image' => 'required',
+        ]);
+        $place = Place::find($id);
+        //$placeimages = $place->images;
+        //$placeimages = PlaceImage::where('place_id', $id)->get();
+        
+        if($request->hasfile('image'))
+        {
+           
+               //$name = time().'.'.$request->file('image')->extension();
+               $image = $request->file('image')->store('images/places');
+
+               $placeimage = PlaceImage::create([
+                'place_id' => $place->id,
+                'image_path' => $image
+            ]);
+
+            if($placeimage){
+            return redirect()->back();
+            }
+        }
+                     
+       
+       
+    
+    }  
+
+    public function deletePhoto($id) {
+        $placeimage = PlaceImage::find($id);
+
+        if (Storage::exists($placeimage->image_path)) {
+            Storage::delete($placeimage->image_path);
+            $placeimage->delete();
+        }
+        //$placeimages = PlaceImage::where('place_id', $id)->get();
+        return redirect()->back();
+ 
+    
     }
 
     /**
@@ -198,13 +245,26 @@ class PlaceController extends Controller
     public function destroy($id)
     {
         $place = Place::find($id);
+
+        if (Storage::exists($place->document)) {
+            Storage::delete($place->document);
+        }
+
+        $images = $place->images;
+        foreach ($images as $image) {
+            if (Storage::exists($image)) {
+                Storage::delete($image);
+                $image->delete();
+            }
+        }
+
         $placedelete = $place->delete();
        
         if($placedelete) {
 
-            return redirect()->back()->with('success', 'Place Deleted successfully');
+            return redirect()->back()->with('success', 'Place deleted successfully');
         } else {
-            return redirect()->back()->with('error', 'Failed to Delete');
+            return redirect()->back()->with('error', 'Failed to delete');
         }
     }
 }

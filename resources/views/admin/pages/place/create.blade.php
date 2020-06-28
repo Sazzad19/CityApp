@@ -10,7 +10,7 @@
           <h4 class="page-title">Create Place</h4>
           <div class="ml-auto text-right">
             <nav aria-label="breadcrumb">
-                <a type="button" href="{{route('places.index')}}" class="btn btn-success btn-lg">Place List</a>
+                <a type="button" href="{{route('places.index')}}" class="btn btn-success">Place List</a>
             </nav>
         </div>
 
@@ -40,7 +40,7 @@
         <form class="form-horizontal" method="post" action="{{route('places.store')}}" enctype="multipart/form-data">
              {{ csrf_field() }}
                 <div class="card-body">
-                    <h4 class="card-title">Place Info</h4>
+                    <h4 class="card-title">Place Information</h4>
                     <div class="form-group row">
                         <label for="name" class="col-sm-3 text-right control-label col-form-label">Place Name</label>
                         <div class="col-sm-6">
@@ -221,11 +221,45 @@
                             </div>
                         </div>
                     </div>
+                    <h4>Doctors Information(If Need)</h4>
+                    <div class="form-group row">
+                        <label for="d_name" class="col-sm-3 text-right control-label col-form-label">Doctor Nmae</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="d_name" name="d_name" placeholder="Doctor Name Here">
+                            <div class="error">
+                                @if($errors->has('d_name'))
+                                       {{$errors->first('d_name')}}
+                                   @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="d_specialist" class="col-sm-3 text-right control-label col-form-label">Specialist</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="d_specialist" name="d_specialist" placeholder="Specialist Here">
+                            <div class="error">
+                                @if($errors->has('d_specialist'))
+                                       {{$errors->first('d_specialist')}}
+                                   @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="d_graduation" class="col-sm-3 text-right control-label col-form-label">Graduation</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="d_graduation" name="d_graduation" placeholder="Graduation Here">
+                            <div class="error">
+                                @if($errors->has('d_graduation'))
+                                       {{$errors->first('d_graduation')}}
+                                   @endif
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="border-top">
                     <div class="card-body">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
                     </div>
                 </div>
             </form>

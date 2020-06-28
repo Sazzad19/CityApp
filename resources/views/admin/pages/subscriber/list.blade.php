@@ -42,6 +42,7 @@
                                 <th>Address</th>
                                 <th>Phone Number</th>
                                 <th>Email</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,7 +55,12 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->address}}</td>
                                 <td>{{$user->phone_number}}</td>
-                                <td>{{$user->email}}</td>                              
+                                <td>{{$user->email}}</td>
+                                <td>
+                                    <a type="button" class="btn btn-info" href="{{route('notification.create', $user->id)}}">
+                                        <i class="fa fa-bell"></i>
+                                    </a>
+                        </td>                              
                             </tr>
                             @php
                               $i++;
@@ -69,6 +75,7 @@
                                 <th>Address</th>
                                 <th>Phone Number</th>
                                 <th>Email</th>
+                                <th>Action</th>
                             </tr>
                         </tfoot>
                     </table>

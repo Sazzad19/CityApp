@@ -59,7 +59,7 @@
                 </div>
                 <div class="border-top">
                     <div class="card-body">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
                     </div>
                 </div>
             </form>

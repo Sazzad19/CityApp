@@ -17,9 +17,12 @@ class CreatePlacesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('location');
-            $table->integer('phone_number');
-            $table->string('website');
-            $table->decimal('charges');
+            $table->string('phone_number');
+            $table->string('website')->nullable();
+            $table->string('d_name')->nullable();
+            $table->string('d_specialist')->nullable();
+            $table->string('d_graduation')->nullable();
+            $table->decimal('charges')->nullable();
             $table->text('description');
             $table->string('document')->nullable();
             $table->decimal('lng', 10, 7);

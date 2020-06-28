@@ -62,13 +62,13 @@
                                             </a>
                                   
                                         </div>
-                                        <div class="col-sm-2">
+                                        {{--<div class="col-sm-2">
                                             <form action="{{route('subcategories.destroy', $subcategory->id)}}" method="post">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 {{ csrf_field()}}
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are You Sure to Delete?')"> <i class="fa fa-trash"></i> </button>
                                             </form>
-                                        </div>
+                                        </div>!--}}
                                        
                                 </td>
                                
